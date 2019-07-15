@@ -47,6 +47,7 @@ The main process is to caculate the similarity between `target user` and `all ot
 while different people have different baseline when giving ratings,some generally give full scores but some pretty strict. so,to aviod bias,we can substact `each user's average rating of all item-based` when caculating weighted average and add it back for the target user as below:
 <div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula2.png"/>
 
-
+there are two ways to caculate similarity:
+<div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/>
 
 
