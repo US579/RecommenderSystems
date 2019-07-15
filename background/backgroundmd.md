@@ -14,4 +14,22 @@
 	   2. Suggests users preference indirectly, such as page views, clicks, purchase records, whether or not listen to a music track, and so on.
 
 ### The standard method of Collaborative Filtering is known as `Nearest Neighborhood algorithm`. 
+	- user-based CF 
+	- item-based CF. 
 
+1. Initialisation
+
+	- build n × m matrix that store the relation between user and ratings 
+
+- Parameter breakdown:
+```
+n × m matrix of ratings
+
+u_i : represent users
+p_j : represent item
+
+```
+
+2. Caculation and predication
+
+the main process is to caculate the similarity between `target user` and `all other users`, select the top X similar users,and take the weighted average of ratings from these X users with similarity as weights
