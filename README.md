@@ -6,7 +6,6 @@ Recommender system using collaborative filtering
 
 
 # Background
-## 9417PJ
 
 ### Collaborative Filtering(协同过滤)
 * Collaborative Filtering, on the other hand, doesn’t need anything else except users’ historical preference on a set of items. Because it’s based on historical data, the core assumption here is that the users who have agreed in the past tend to also agree in the future.
