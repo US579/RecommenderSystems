@@ -41,12 +41,10 @@ p_j : represent item
 2. Caculation and predication
 
 The main process is to caculate the similarity between `target user` and `all other users`, select the top X similar users,and take the weighted average of ratings from these X users with similarity as weights
-
 <div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula1.png"/>
 
 
 while different people have different baseline when giving ratings,some generally give full scores but some pretty strict. so,to aviod bias,we can substact `each user's average rating of all item-based` when caculating weighted average and add it back for the target user as below:
-
 <div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula2.png"/>
 
 
