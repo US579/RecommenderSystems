@@ -7,9 +7,12 @@ Recommender system using collaborative filtering
 
 # Background
 
+### content-based
+*Content-based approach requires a good amount of information of items’ own features, rather than using users’ interactions and feedbacks.
+
+
 ### Collaborative Filtering(协同过滤)
 * Collaborative Filtering, on the other hand, doesn’t need anything else except users’ historical preference on a set of items. Because it’s based on historical data, the core assumption here is that the users who have agreed in the past tend to also agree in the future.
-
 * 主要根据用户的历史信息
 ( Core: 这个用户以前喜欢什么现在也会喜欢什么  which means 很专一 )
 
@@ -48,5 +51,6 @@ while different people have different baseline when giving ratings,some generall
 
 there are two ways to caculate similarity:
 <div align=center><img width="337" height="225" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/></div>
+
 
 
