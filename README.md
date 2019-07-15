@@ -19,8 +19,9 @@ Recommender system using collaborative filtering
 	- Implicit Rating
 	   2. Suggests users preference indirectly, such as page views, clicks, purchase records, whether or not listen to a music track, and so on.
 
-### The standard method of Collaborative Filtering is known as 
-###	`Nearest Neighborhood algorithm`. 
+### The standard method of Collaborative Filtering 
+
+#### KNN
 
 	- user-based CF 
 	- item-based CF. 
