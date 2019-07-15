@@ -111,7 +111,8 @@ u.data     -- The full u data set, 100000 ratings by 943 users on 1682 items.
 	         user id | item id | rating | timestamp. 
               The time stamps are unix seconds since 1/1/1970 UTC   
 
-u.info     -- The number of users, items, and ratings in the u data set.
+udf2 = pd.read_csv('/Users/us579/Desktop/19T2/COMP9417-19T2/RecommenderSystems/data/ml-100k/u.item', sep='|',
+                  encoding='latin-1',usecols=range(5),names=m_cols).info     -- The number of users, items, and ratings in the u data set.
 
 u.item     -- Information about the items (movies); this is a tab separated
               list of
