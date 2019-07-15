@@ -36,7 +36,6 @@ n × m matrix of ratings
 
 u_i : represent users
 p_j : represent item
-
 ```
 
 2. Caculation and predication
