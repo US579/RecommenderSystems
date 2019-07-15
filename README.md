@@ -50,7 +50,7 @@ while different people have different baseline when giving ratings,some generall
 <div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula2.png"/></div>
 
 there are two ways to caculate similarity:
-<div align=center><img width="337" height="225" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/></div>
+<div align=center><img width="360" height="225" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/></div>
 
 
 

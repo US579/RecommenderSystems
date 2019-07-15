@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import pairwise_distances
 import scipy.sparse as sp
 from scipy.sparse.linalg import svds
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -20,12 +21,25 @@ df2 = pd.read_csv('data/ml-100k/u.item', sep='|',
 
 df = pd.merge(df,df2,on="item_id")
 print(df.head())
-
-print(df.describe())
-
+# print(df.describe())
 
 
+ratings = pd.DataFrame(df.groupby('title')['rating'].mean())
+print(ratings.head())
+ratings['number_of_ratings'] = df.groupby('title')['rating'].count()
+print(ratings.head())
 
+ratings['rating'].hist(bins=50)
+# plt.show()
+ratings['number_of_ratings'].hist(bins=60)
+# plt.show()
+
+import seaborn as sns
+sns.jointplot(x='rating', y='number_of_ratings', data=ratings)
+# plt.show()
+
+movie_matrix = df.pivot_table(index='user_id', columns='title', values='rating')
+print(movie_matrix.head())
 
 # n_users = df.user_id.unique().shape[0]
 # n_items = df.item_id.unique().shape[0]
