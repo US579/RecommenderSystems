@@ -48,6 +48,6 @@ while different people have different baseline when giving ratings,some generall
 <div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula2.png"/>
 
 there are two ways to caculate similarity:
-<div align=center><img width="250" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/>
+<div align=center><img width="500" height="75" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/>
 
 
