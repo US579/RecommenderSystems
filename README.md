@@ -42,4 +42,4 @@ p_j : represent item
 
 The main process is to caculate the similarity between `target user` and `all other users`, select the top X similar users,and take the weighted average of ratings from these X users with similarity as weights
 
-![image text](https://github.com/US579/COMP9417-19T1/blob/master/lab3/regression.png)
+![image text](https://github.com/US579/RecommenderSystems/blob/master/image/formula1.png)
