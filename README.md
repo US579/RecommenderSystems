@@ -54,6 +54,16 @@ while different people have different baseline when giving ratings,some generall
 there are two ways to caculate similarity:
 <div align=center><img width="390" height="225" src="https://github.com/US579/RecommenderSystems/blob/master/image/formula3.png"/></div>
 
+## How to Run
+
+1. part 1
+
+``` Python
+# predict  TOP-12 recommended movies
+print(KNN(df,rating,item_similarity,'Toy Story ',12))
+```
+
+
 # baseline
 
 ### 1. initialize the feature matrix
