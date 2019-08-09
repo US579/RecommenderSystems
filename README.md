@@ -77,16 +77,24 @@ to predicte top-K movie
 
 ```python 
 def KNN(items, ratings, item_similarity, keywords, k):
-    movie_list = [] 
+    '''
+    :param items: movelens pandas table
+    :param ratings: ratings of movie
+    :param item_similarity: similarity matrix
+    :param keywords: movie name
+    :param k: top-K
+    :return: list contains 1 moveName 2 movieSimilarity 3 mean
+    '''
+    moveList = []
     movie_id = list(items[items['title'].str.contains(keywords)].item_id)[0] 
     movie_similarity = item_similarity[movie_id - 1]
     movie_similarity_index = np.argsort(-movie_similarity)[1:k + 1]
-    for index in movie_similarity_index:
-        movie_list = list(set(list(items[items['item_id'] == index + 1].title)))
-        movie_list.append(movie_similarity[index])  
-        movie_list.append(ratings[ratings['item_id'] == index + 1].rating.mean()) 
-        movie_list.append(move_list)
-    return movie_list
+    for i in movie_similarity_index:
+        list_mv = list(set(list(items[items['item_id'] == i + 1].title)))
+        list_mv.append(movie_similarity[i])
+        list_mv.append(ratings[ratings['item_id'] == i + 1].rating.mean())
+        moveList.append(list_mv)
+    return moveList
  ```
 
 ### 2 Prediction
