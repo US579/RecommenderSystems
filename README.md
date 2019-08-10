@@ -60,7 +60,7 @@ there are two ways to caculate similarity:
 
 ``` Python
 # predict  TOP-12 recommended movies
-print(KNN(df,rating,item_similarity,'Toy Story ',12))
+python3 Recommender.py
 ```
 
 
