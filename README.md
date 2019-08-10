@@ -128,6 +128,96 @@ def predict_rate(rating, similarity):
 
 
 ### 3. Evaluation 
+To calculate the RMSE and return it
+```python
+def rmse(prediction, ground_truth):
+    prediction = prediction[ground_truth.nonzero()].flatten()
+    ground_truth = ground_truth[ground_truth.nonzero()].flatten()
+    return sqrt(mean_squared_error(prediction, ground_truth))
+```
+
+To calculate precision, recall, coverage and popularity and return them
+```python
+def evaluate(train, prediction, item_popular, name):
+    hit = 0
+    rec_count = 0
+    test_count = 0
+    popular_sum = 0
+    hit_pred = set()
+    for u_index in range(n_users):
+        items = np.where(train_data_matrix[u_index, :] == 0)[0]
+        pre_items = sorted(
+            dict(zip(items, prediction[u_index, items])).items(),
+            key=itemgetter(1),
+            reverse=True)[:20]
+        test_items = np.where(test_data_matrix[u_index, :] > 0)[0]
+        for item, _ in pre_items:
+            if item in test_items:
+                hit += 1
+            hit_pred.add(item)
+            if item in item_popular:
+                popular_sum += math.log(1 + item_popular[item])
+        rec_count += len(pre_items)
+        test_count += len(test_items)
+    precision = hit / (1.0 * rec_count)
+    recall = hit / (1.0 * test_count)
+    coverage = len(hit_pred) / (1.0 * len(item_popular))
+    popularity = popular_sum / (1.0 * rec_count)
+    return precision, recall, coverage, popularity
+```
+Use svd and calculate its RMSE and precision
+```python
+def svd(train_data_matrix, n_users, n_items, test_data_matrix):
+    svd_x = []
+    svd_y = []
+    precision_y = []
+    for i in range(1,50,2):
+        svd_x.append(i)
+        u, s, v = svds(train_data_matrix, k = i) #s为分解的奇异值 u[1650, 1650] s[1650, 940] v[940, 940]
+        s_matrix = np.diag(s)
+        pred_svd = np.dot(np.dot(u, s_matrix), v)
+        svd_y.append(rmse(pred_svd, test_data_matrix))
+        svd_precision, recall, coverage, popularity = evaluate(train_data_matrix, pred_svd, item_popular, 'svd')
+        precision_y.append(svd_precision)
+    return svd_x, svd_y, precision_y
+```
+Show the effect of K change on RMSE
+```python
+def plot_rmse(train_data_matrix, n_users, n_items, test_data_matrix):
+    svd_x, svd_y, precision_y = svd(train_data_matrix, n_users, n_items, test_data_matrix)
+    svd_rmse = plt.figure()
+    a = svd_rmse.add_subplot(111)
+    b = svd_rmse.add_subplot(222)
+    a.set(xlim = [0,50], ylim = [2.6,3.5], title = 'k-rmse', xlabel = 'value of k', ylabel = 'RMSE')
+    a.plot(svd_x, svd_y, color = 'red')
+    b.set(xlim = [0,50], ylim = [0.1,0.3], title = 'k-rmse', xlabel = 'value of k', ylabel = 'Precision')
+    b.plot(svd_x, precision_y, color = 'red')
+    plt.show()
+```
+Show the effect of weight change on precision and RMSE
+```python
+def plot_item(weight, precision_item):
+    item_rmse = plt.figure()
+    e = item_rmse.add_subplot(111)
+    f = item_rmse.add_subplot(222)
+    e.set(title = 'weight-rmse', xlabel = 'value of weight', ylabel = 'RMSE')
+    e.plot(weight, item_y)
+    f.set(title = 'weight-precision', xlabel = 'value of weight', ylabel = 'Precision')
+    f.plot(weight, precision_item)
+    plt.show()
+```
+
+evaluate
+```python
+plot_rmse(train_data_matrix, n_users, n_items, test_data_matrix)
+plot_item(weight2, precision_item)
+plot_user(weight, precision_user)
+```
+
+
+
+
+
 
 
 
