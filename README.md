@@ -56,13 +56,18 @@ there are two ways to caculate similarity:
 
 ## How to Run
 
-1. part 1
+1. recommend top-K
 
 ``` Python
 # predict  TOP-12 recommended movies
 python3 Recommender.py
 ```
-2。 part 2
+2 .
+```python
+python3 evaluate.py
+```
+
+3. evaluate 2
 ```python
 python3 evaluate.py
 ```
