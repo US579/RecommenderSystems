@@ -62,7 +62,7 @@ there are two ways to caculate similarity:
 # predict  TOP-12 recommended movies
 python3 Recommender.py
 ```
-2 .
+2.
 ```python
 python3 evaluate.py
 ```
@@ -134,6 +134,65 @@ def predict(rating, similarity, base = 'user'):
 def predict_rate(rating, similarity):
     pred = rating.dot(similarity) / np.array([np.abs(similarity).sum(axis=1)])
     return pred
+```
+User based method to predict user's movie score:
+```python
+def user_base_predict(testUser, topKUser):
+	# similarity again:
+	sim = pairwise_distances(testUser,topKUser, metric = "cosine")
+	sim2 = pairwise_distances(testUser,topKUser, metric = "cosine")
+	#print(sim)
+	for i in range(len(sim)):
+		for j in range(len(sim[0])):
+			sim[i][j] = 1/(sim[i][j]+1)
+	sim_avg = sim.mean(axis = 1)
+	pred = sim_avg * (np.dot(sim2,topKUser))
+
+	return pred
+# get similarity of testUser with allUser
+def get_similarity(testUser, allUser):
+	return pairwise_distances(testUser,allUser, metric = "cosine")
+# get matrix of topK similarity User
+def get_topK(matrix,similarity,k):
+	similarity = similarity[0]
+	topK_data_matrix = []
+	i = len(similarity)
+	for j in range(i):
+		# 有问题
+		arr = similarity.argsort()[-k:]
+		arr_index = arr
+	for m in arr_index:
+		topK_data_matrix.append(matrix[m])
+	# top k mean similarity
+	topK_data_matrix = np.asarray(topK_data_matrix)
+	return topK_data_matrix
+# predict all user's score
+def predict_all(train_data_matrix,topK):
+	predict = []
+	for i in range(len(train_data_matrix)):
+		testUser = [train_data_matrix[i]]
+		if i == 0:
+			allUser = train_data_matrix[i+1:]
+		elif i == (len(train_data_matrix) -1):
+			allUser = train_data_matrix[:i]
+		else:
+			allUp = train_data_matrix[:i]
+			allDown = train_data_matrix[i+1:]
+			allUser = np.concatenate((allUp,allDown))
+		s = get_similarity(testUser,allUser)
+		topKUser = get_topK(train_data_matrix,s,topK)
+		prediction = user_base_predict(testUser,topKUser)
+		predict.append(prediction)
+	
+	return np.asarray(predict)
+
+def predict_userMovieScore(predictall, userID):
+	return predictall[userID-1]
+
+# RUN: if we want to predict the 1st user's score with topK similarity:
+y_predict = predict_all(train_data_matrix,10)
+predict_userMovieScore(y_predict,1)
+
 ```
 
 
