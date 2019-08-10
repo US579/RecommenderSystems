@@ -62,9 +62,9 @@ there are two ways to caculate similarity:
 # predict  TOP-12 recommended movies
 python3 Recommender.py
 ```
-2.
+2. predict movie score
 ```python
-python3 evaluate.py
+python3 Predict_Score.py
 ```
 
 3. evaluate 2
@@ -158,7 +158,6 @@ def get_topK(matrix,similarity,k):
 	topK_data_matrix = []
 	i = len(similarity)
 	for j in range(i):
-		# 有问题
 		arr = similarity.argsort()[-k:]
 		arr_index = arr
 	for m in arr_index:
