@@ -62,7 +62,12 @@ there are two ways to caculate similarity:
 # predict  TOP-12 recommended movies
 python3 Recommender.py
 ```
-
+2。 part 2
+```python
+plot_rmse(train_data_matrix, n_users, n_items, test_data_matrix)
+plot_item(weight2, precision_item)
+plot_user(weight, precision_user)
+```
 
 # baseline
 
@@ -207,12 +212,7 @@ def plot_item(weight, precision_item):
     plt.show()
 ```
 
-evaluate
-```python
-plot_rmse(train_data_matrix, n_users, n_items, test_data_matrix)
-plot_item(weight2, precision_item)
-plot_user(weight, precision_user)
-```
+
 
 
 
