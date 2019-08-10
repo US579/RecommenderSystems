@@ -64,10 +64,10 @@ python3 Recommender.py
 ```
 2。 part 2
 ```python
-plot_rmse(train_data_matrix, n_users, n_items, test_data_matrix)
-plot_item(weight2, precision_item)
-plot_user(weight, precision_user)
+python3 evaluate.py
 ```
+Output 3 pictures
+They are K-RMSE and K-Precision, Weight-RMSE and Weight-Precision of user base, Weight-RMSE and Weight-Precision of item base
 
 # baseline
 
