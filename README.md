@@ -13,8 +13,8 @@ Recommender system using collaborative filtering
 
 ### Collaborative Filtering(协同过滤)
 * Collaborative Filtering, on the other hand, doesn’t need anything else except users’ historical preference on a set of items. Because it’s based on historical data, the core assumption here is that the users who have agreed in the past tend to also agree in the future.
-* 主要根据用户的历史信息
-( Core: 这个用户以前喜欢什么现在也会喜欢什么  which means 很专一 )
+* mainly depend on the history of user
+( Core: people perfer the things they get use to it )
 
 #### This can be expressed by two categories:
 	- Explicit Rating
