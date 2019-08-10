@@ -11,7 +11,7 @@ Recommender system using collaborative filtering
 *Content-based approach requires a good amount of information of items’ own features, rather than using users’ interactions and feedbacks.
 
 
-### Collaborative Filtering(协同过滤)
+### Collaborative Filtering
 * Collaborative Filtering, on the other hand, doesn’t need anything else except users’ historical preference on a set of items. Because it’s based on historical data, the core assumption here is that the users who have agreed in the past tend to also agree in the future.
 * mainly depend on the history of user
 ( Core: people perfer the things they get use to it )
